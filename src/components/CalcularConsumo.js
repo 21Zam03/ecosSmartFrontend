@@ -1,44 +1,43 @@
-import { View, TextInput, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
+import { View, TextInput, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function SignUpName() {
+export default function CalcularConsumo() {
 
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [num, setNum] = useState("");
 
     const navigation = useNavigation();
-
     const redirectToLogin = () => {
         navigation.navigate('Login')
     }
 
     const redirectToEmail = async () => {
         try {
-            await AsyncStorage.setItem('name', name);
-            await AsyncStorage.setItem('lastName', lastName);
-            navigation.navigate('SignUpEmail')
+            await AsyncStorage.setItem('televisionHoras', num);
+            navigation.navigate('CalcularConsumo2')
         } catch (e) {
             console.error('Error guardando los datos', e);
         }
     }
+    const handleChange = (text) => {
+        // Filtrar los caracteres no numéricos
+        const numericValue = text.replace(/[^0-9]/g, '');
+        setNum(numericValue);
+    };
 
     return (
         <View style={styles.contenedor}>
             <View style={styles.contenedorQuestion}>
-                <Text style={styles.textQuestionName}>¿Cual es tu nombre completo?</Text>
-                <Text>Digita el nombre que usas en tu vida real</Text>
+                <Text style={styles.textQuestionName}>¿Cuantas horas al dia usas la television?</Text>
+                <Text>Digita el numero estimado de horas al dia que utilizas dicho dispositivo</Text>
             </View>
             <View style={styles.contenedorInputs}>
-                <TextInput style={styles.inputs} value={name} onChangeText={setName} placeholder="Nombres"></TextInput>
-                <TextInput style={styles.inputs} value={lastName} onChangeText={setLastName} placeholder="Apellidos"></TextInput>
+                <TextInput style={styles.inputs} value={num} onChangeText={handleChange} placeholder="0" keyboardType="numeric" autoFocus={true}></TextInput>
+                <Text>horas</Text>
             </View>
             <View>
-                <TouchableOpacity style={[!name || !lastName ? styles.botonDisabled : styles.botonEnabled]} onPress={redirectToEmail} disabled={!name || !lastName}><Text style={styles.textBoton}>Siguiente</Text></TouchableOpacity>
-            </View>
-            <View style={{ position: "absolute", bottom: 20, right: 15, width: "100%" }}>
-                <TouchableOpacity onPress={redirectToLogin}><Text style={styles.textCuenta}>¿Ya tienes una cuenta?</Text></TouchableOpacity>
+                <TouchableOpacity style={[!num ? styles.botonDisabled : styles.botonEnabled]} onPress={redirectToEmail} disabled={!num}><Text style={styles.textBoton}>Siguiente</Text></TouchableOpacity>
             </View>
         </View>
     );
@@ -61,19 +60,26 @@ const styles = StyleSheet.create({
     contenedorInputs: {
         flexDirection: "row",
         gap: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+        borderColor: "black",
+        borderWidth: 1,
+        padding: 20
     },
 
     textQuestionName: {
-        fontSize: 25,
-        fontWeight: "bold"
+        fontSize: 20,
+        fontWeight: "bold",
     },
 
     inputs: {
         borderRadius: 10,
-        borderColor: "black",
+        borderColor: "gray",
         borderWidth: 1,
         padding: 10,
-        flex: 0.5,
+        width: 50,
+        textAlign: "center"
     },
 
     botonEnabled: {
@@ -100,4 +106,3 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     }
 });
-

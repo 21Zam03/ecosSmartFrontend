@@ -34,15 +34,15 @@ export default function Login() {
                 <View style={{ flex: 1 }}>
                     <View style={login_styles.titulo_contenedor}>
                         <Image
-                            source={require('../../assets/logo-autonoma.png')}
-                            style={{ width: 70, height: 40 }}
+                            source={require('../../assets/logo.png')}
+                            style={{ width: 50, height: 40 }}
                         />
-                        <Text style={{ color: "white", fontSize: 20 }}>Soy Autónoma</Text>
+                        <Text style={{ color: "white", fontSize: 20 }}>EcoSmart</Text>
                         <View style={login_styles.curve} />
                     </View>
                     <View style={{ paddingRight: 15, paddingLeft: 15, paddingTop: 15, paddingBottom: 15, flex: 1 }}>
                         <View style={login_styles.login_contenedor}>
-                            <View style={{ marginBottom: 30 }}><Text style={{ color: "#878CF0", fontWeight: "bold", textAlign: "center", fontSize: 26 }}>INICIAR SESIÓN</Text></View>
+                            <View style={{ marginBottom: 30 }}><Text style={{ color: "#8DEA51", fontWeight: "bold", textAlign: "center", fontSize: 26 }}>INICIAR SESIÓN</Text></View>
                             <View style={login_styles.username_contenedor}>
                                 <Text style={login_styles.label}>Correo:</Text>
                                 <TextInput
@@ -102,7 +102,7 @@ const login_styles = StyleSheet.create({
     },
 
     titulo_contenedor: {
-        backgroundColor: "#878CF0",
+        backgroundColor: "#8DEA51",
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
@@ -124,7 +124,7 @@ const login_styles = StyleSheet.create({
     input: {
         marginBottom: 12,
         borderBottomWidth: 1,
-        borderBottomColor: "#878CF0",
+        borderBottomColor: "#8DEA51",
         paddingTop: 15,
         paddingBottom: 15,
         backgroundColor: '#ffffff'
@@ -146,7 +146,7 @@ const login_styles = StyleSheet.create({
     },
 
     boton: {
-        backgroundColor: "#878CF0",
+        backgroundColor: "#8DEA51",
         padding: 20,
         borderRadius: 30
     },
@@ -154,7 +154,7 @@ const login_styles = StyleSheet.create({
     curve: {
         width: '60%',
         height: 50, // Altura de la curva
-        backgroundColor: '#878CF0', // Mismo color que el fondo del contenedor
+        backgroundColor: '#8DEA51', // Mismo color que el fondo del contenedor
         borderBottomLeftRadius: 100, // Radio grande para la curva
         borderBottomRightRadius: 100, // Radio grande para la curva
         transform: [{ scaleX: 2 }], // Ampliar la curva para crear el efecto

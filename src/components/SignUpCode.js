@@ -157,17 +157,16 @@ const styles = StyleSheet.create({
     },
 
     botonEnabled: {
-        backgroundColor: "#FF9F43",
+        backgroundColor: "#8DEA51",
         padding: 15,
         borderRadius: 30
     },
 
     botonDisabled: {
-        backgroundColor: "#FED77C",
+        backgroundColor: "#BBFA92",
         padding: 15,
         borderRadius: 30
     },
-
 
     textBoton: {
         color: "white",

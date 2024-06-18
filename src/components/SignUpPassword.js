@@ -16,41 +16,28 @@ export default function SignUpPassword() {
     const { guardarDatosUsuario } = useAuth();
 
     const handleButtonPress = async () => {
-        const formData = new FormData();
+        
+        const clientDocument = {
+            nombre: await AsyncStorage.getItem('name'),
+            apellido: await AsyncStorage.getItem('lastName'),
+        };
+
+        const userDocument = {
+            email: await AsyncStorage.getItem('email'),
+            password: input,
+            rol: "User", 
+        }
+        
+        const SignInDto = {
+            clientDocument: clientDocument,
+            userDocument: userDocument
+        };
+
         try {
-            const storedName = await AsyncStorage.getItem('name');
-            const storedLastName = await AsyncStorage.getItem('lastName');
-            const storedDate = await AsyncStorage.getItem('date');
-            const storedGenre = await AsyncStorage.getItem('genre');
-            const storedDistrict = await AsyncStorage.getItem('location')
-            const storedCarreer = await AsyncStorage.getItem('carreer');
-
-            const storedEmail = await AsyncStorage.getItem('email');
-            const storedPassword = input;
-            const storedRole = "Usuario"
-
-            formData.append("fullname", storedName + " " + storedLastName);
-            formData.append("fecha_nacimiento", storedDate);
-            formData.append("genero", storedGenre);
-            formData.append("distrito", storedDistrict);
-            formData.append("carreraProfesional", storedCarreer);
-            formData.append("photo", null);
-            formData.append("email", storedEmail);
-            formData.append("password", storedPassword);
-            formData.append("rol", storedRole);
-
-            const response = await axios.post('http://192.168.1.39:9000/api/students', formData,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                }
-            );
-
+            const response = await axios.post('http://80.80.87.137:9000/api/users/signUp', SignInDto);
             if (response.data) {
                 guardarDatosUsuario(response.data);
                 console.log(response.data);
-                navigation.navigate('Inicio');
             }
         } catch (e) {
             console.error('Error retrieving data', e);
@@ -130,13 +117,13 @@ const styles = StyleSheet.create({
     },
 
     botonEnabled: {
-        backgroundColor: "#FF9F43",
+        backgroundColor: "#8DEA51",
         padding: 15,
         borderRadius: 30
     },
 
     botonDisabled: {
-        backgroundColor: "#FED77C",
+        backgroundColor: "#BBFA92",
         padding: 15,
         borderRadius: 30
     },

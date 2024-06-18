@@ -15,7 +15,7 @@ export default function SignUpIntro () {
     return (
         <View style={styles.contenedor}>
             <View>
-                <Text style={styles.textInicio}>Únete a Ua Net</Text>
+                <Text style={styles.textInicio}>Únete a EcoSmart</Text>
             </View>
             <View>
                 <Image
@@ -25,7 +25,7 @@ export default function SignUpIntro () {
             </View>
             <View>
                 <Text style={{fontSize: 15}}>
-                    Create una cuenta y conectate con tus amigos, compañeros y comunidades de estudiantes que compartan los mismo intereses profesionales
+                    Create una cuenta y comienza a optimizar tu consumo de electricidad y cuidar el medio ambiente! Con ecoSmart 
                 </Text>
             </View>
             <View style={styles.contenedorBotones}>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
 
     boton: {
-        backgroundColor: "#FF9F43",
+        backgroundColor: "#8DEA51",
         borderRadius: 25,
         padding: 15
     },

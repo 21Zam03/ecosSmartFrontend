@@ -23,7 +23,7 @@ export default function SignUpEmail () {
         <View style={styles.contenedor}>
             <View style={styles.contenedorQuestion}>
                 <Text style={styles.textQuestionName}>¿Cual es tu correo?</Text>
-                <Text>Digita tu correo institucional para conectar a la plataforma</Text>
+                <Text>Digita un correo personal o institucional para conectarte a la plataforma</Text>
             </View>
             <View style={styles.contenedorInputs}>
                 <TextInput style={styles.inputs} value={email} onChangeText={setEmail} placeholder="Correo institucional"></TextInput>
@@ -32,7 +32,7 @@ export default function SignUpEmail () {
                 <Text>Podrias recibir notificaciones y mensajes a tu correo institucional por parte de nosotros</Text>
             </View>
             <View>
-                <TouchableOpacity style={[!email ? styles.botonDisabled : styles.botonEnabled]} onPress={redirectToSignUpCode}><Text style={styles.textBoton}>Siguiente</Text></TouchableOpacity>
+                <TouchableOpacity style={[!email ? styles.botonDisabled : styles.botonEnabled]} disabled={!email} onPress={redirectToSignUpCode}><Text style={styles.textBoton}>Siguiente</Text></TouchableOpacity>
             </View>
         </View>
     );
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
     },
     
     botonEnabled: {
-        backgroundColor: "#FF9F43",
+        backgroundColor: "#8DEA51",
         padding: 15,
         borderRadius: 30
     },
 
     botonDisabled: {
-        backgroundColor: "#FED77C",
+        backgroundColor: "#BBFA92",
         padding: 15,
         borderRadius: 30
     },

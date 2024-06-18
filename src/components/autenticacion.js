@@ -18,16 +18,16 @@ export default function Autenticacion() {
             <View style={autenticacion_styles.subContenedor1}>
                 <View style={{flexDirection: "row", justifyContent:"center", alignItems:"center"}}>
                     <Image
-                        source={require('../../assets/logo-autonoma.png')}
-                        style={{ width: 80, height: 40 }}
+                        source={require('../../assets/logo.png')}
+                        style={{ width: 50, height: 40 }}
                     />
                     <Image
-                        source={require('../../assets/logo.png')}
+                        source={require('../../assets/titulo.png')}
                         style={autenticacion_styles.logo}
                     />
                 </View>
                 <View style={autenticacion_styles.curve} />
-                <Text style={{color: "white", fontStyle: "italic"}}>Universidad Autónoma del Perú</Text>
+                <Text style={{color: "white", fontStyle: "italic"}}>EcoSmart tu mejor opción</Text>
             </View>
             <View style={autenticacion_styles.subContenedor2}>
                 <View>
@@ -50,7 +50,7 @@ export default function Autenticacion() {
 const autenticacion_styles = StyleSheet.create({
     contenedor: {
         flex: 1,
-        backgroundColor: "#878CF0",
+        backgroundColor: "#8DEA51",
     },
 
     subContenedor1: {
@@ -74,8 +74,8 @@ const autenticacion_styles = StyleSheet.create({
     },
 
     logo: {
-        width: 200,
-        height: 60,
+        width: 230,
+        height: 40,
         marginBottom: 0,
     },
 
@@ -98,7 +98,7 @@ const autenticacion_styles = StyleSheet.create({
     },
 
     botonIniciarSesion: {
-        backgroundColor: "#878CF0",
+        backgroundColor: "#8DEA51",
         borderRadius: 20,
         paddingTop: 20,
         paddingBottom: 20,
