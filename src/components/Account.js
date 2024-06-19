@@ -39,7 +39,10 @@ export default function Account() {
                         style={styles.imagen}
                     />
                 )}
-                <Text style={styles.texto}>{usuario ? usuario.fullname : ".........."}</Text>
+                <View>
+                    <Text style={styles.texto}>{usuario ? usuario.nombre+" "+usuario.apellido : ".........."}</Text>
+                    <Text style={{color: "gray"}}>{usuario ? usuario.userDto.email : ".........."}</Text>
+                </View>
             </View>
             <View style={styles.contenedorSecond}>
                 <View style={styles.child}>
@@ -50,20 +53,20 @@ export default function Account() {
                 </View>
                 <View style={styles.child}>
                     <TouchableOpacity style={{ gap: 5 }}>
-                        <Icon name="user-friends" size={25} color="#FF9F43" />
-                        <Text>Amigos</Text>
+                        <Icon name="envelope" size={25} color="#FF9F43" />
+                        <Text>Correo</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.child}>
                     <TouchableOpacity style={{ gap: 5 }}>
-                        <Icon name="video" size={25} color="#FF9F43" />
-                        <Text>Video</Text>
+                        <Icon name="key" size={25} color="#FF9F43" />
+                        <Text>Contraseña</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.child}>
                     <TouchableOpacity style={{ gap: 5 }}>
-                        <Icon name="calendar-alt" size={25} color="#FF9F43" />
-                        <Text>Eventos</Text>
+                        <Icon name="cog" size={25} color="#FF9F43" />
+                        <Text>Configuracion</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
     contenedorPadre: {
         flex: 1,
         padding: 10,
-        gap: 20
+        gap: 20,
     },
 
     contenedorFirst: {
@@ -107,7 +110,7 @@ const styles = StyleSheet.create({
     child: {
         padding: 15,
         borderRadius: 5,
-        width: "48%",
+        width: "100%",
         backgroundColor: "white",
         shadowColor: '#000', // Color de la sombra
         shadowOffset: { width: 0, height: 2 }, // Desplazamiento de la sombra

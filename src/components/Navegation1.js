@@ -35,7 +35,7 @@ export default function Navegacion1() {
     return (
         <Looktab.Navigator>
             <Looktab.Screen name='Inicio' component={Inicio} options={{ headerShown: false }}></Looktab.Screen>
-            <Looktab.Screen name='Account' component={Account} options={{ headerShown: false }}></Looktab.Screen>
+            <Looktab.Screen name='Account' component={Account} options={{headerTitle: "Cuenta"}}></Looktab.Screen>
             <Looktab.Screen name='CalcularConsumo' component={CalcularConsumo} options={{headerTitle: "Calcular consumo"}}></Looktab.Screen>
             <Looktab.Screen name='CalcularConsumo2' component={CalcularConsumo2} options={{headerTitle: "Calcular consumo"}}></Looktab.Screen>
             <Looktab.Screen name='CalcularConsumo3' component={CalcularConsumo3} options={{headerTitle: "Calcular consumo"}}></Looktab.Screen>

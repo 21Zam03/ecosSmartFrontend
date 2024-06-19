@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon2 from 'react-native-vector-icons/MaterialIcons';
+import Icon3 from 'react-native-vector-icons/FontAwesome5';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const calculateEnergyConsumption = (televisionHoras, lavadoraHoras, bombillasCantidad, bombillasTipo, bombillasHoras, computadoraHoras, refrigeradoraCantidad, refrigeradoraTamaño) => {
@@ -80,15 +82,24 @@ const getRecommendations = (consumo) => {
 const getRecommendationType = (consumo) => {
     if (consumo < 5) {
         return (
-            <Text>¡Buen trabajo! Tu consumo energético es bajo</Text>        
+            <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                <Text>¡Buen trabajo! Tu consumo energético es bajo </Text>
+                <Icon2 name="check-circle" size={25} color="#8DEA51" />
+            </View>
         );
     } else if (consumo >= 5 && consumo <= 10) {
         return (
-            <Text>Tu consumo es moderado</Text>
+            <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 5 }}>
+                <Text>Tu consumo es moderado</Text>
+                <Icon3 name="balance-scale" size={25} color="#8DEA51" />
+            </View>
         );
     } else {
         return (
-            <Text>Tu consumo energético es alto</Text>
+            <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                <Text>Tu consumo energético es alto</Text>
+                <Icon2 name="warning" size={25} color="#8DEA51" />
+            </View>
         );
     }
 };
@@ -137,8 +148,6 @@ export default function CalcularFinal() {
                 </View>
                 <View style={styles.contenedorQuestion}>
                     <Text style={styles.textQuestionName}>Según la información proporcionada, tu consumo estimado diario de energía eléctrica es de: {consumo.toFixed(2)} kWh</Text>
-                </View>
-                <View style={styles.contenedorQuestion}>
                     {getRecommendations(consumo)}
                 </View>
                 <View>

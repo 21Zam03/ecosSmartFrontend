@@ -34,7 +34,7 @@ export default function SignUpPassword() {
         };
 
         try {
-            const response = await axios.post('http://80.80.87.137:9000/api/users/signUp', SignInDto);
+            const response = await axios.post('http://192.168.1.39:9000/api/users/signUp', SignInDto);
             if (response.data) {
                 guardarDatosUsuario(response.data);
                 console.log(response.data);
