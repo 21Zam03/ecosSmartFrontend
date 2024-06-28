@@ -9,6 +9,11 @@ import CalcularConsumo3 from './CalcularConsumo3';
 import CalcularConsumo4 from './CalcularConsumo4';
 import CalcularConsumo5 from './CalcularConsumo5';
 import CalcularFinal from './CalcularFinal';
+import Registros from './registros';
+import RegistroInfo from './registroInfo';
+import Estadisticas from './estadisticas';
+import ChatBot from './chatbot';
+import Contenido from './Contenido';
 
 const Looktab = createStackNavigator();
 
@@ -42,6 +47,11 @@ export default function Navegacion1() {
             <Looktab.Screen name='CalcularConsumo4' component={CalcularConsumo4} options={{headerTitle: "Calcular consumo"}}></Looktab.Screen>
             <Looktab.Screen name='CalcularConsumo5' component={CalcularConsumo5} options={{headerTitle: "Calcular consumo"}}></Looktab.Screen>
             <Looktab.Screen name='CalcularFinal' component={CalcularFinal} options={{headerTitle: "Resultado"}}></Looktab.Screen>
+            <Looktab.Screen name='Registros' component={Registros} options={{headerTitle: "Registros"}}></Looktab.Screen>
+            <Looktab.Screen name='RegistroInfo' component={RegistroInfo} options={{headerTitle: "Registro"}}></Looktab.Screen>
+            <Looktab.Screen name='Estadisticas' component={Estadisticas} options={{headerTitle: "Grafica"}}></Looktab.Screen>
+            <Looktab.Screen name='ChatBot' component={ChatBot} options={{headerTitle: "Chat bot"}}></Looktab.Screen>
+            <Looktab.Screen name='Contenido' component={Contenido} options={{headerTitle: "Articulos"}}></Looktab.Screen>
         </Looktab.Navigator>
     );
 }

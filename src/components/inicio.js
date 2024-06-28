@@ -1,7 +1,11 @@
-import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView, StatusBar } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
+import Icon2 from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon3 from 'react-native-vector-icons/Ionicons';
+import Estadisticas from "./estadisticas";
 
 export default function Inicio() {
     const navigation = useNavigation();
@@ -32,46 +36,100 @@ export default function Inicio() {
         navigation.navigate('CalcularConsumo')
     };
 
+    const handlePress2 = () => {
+        navigation.navigate('Registros', {
+            id: usuario.idClient,
+        })
+    };
+
+    const handlePress3 = () => {
+        navigation.navigate('Estadisticas')
+    };
+
+    const handlePress4 = () => {
+        navigation.navigate('ChatBot', {
+            usuario: usuario,
+        })
+    };
+
+    const handlePress5 = () => {
+        navigation.navigate('Contenido')
+    };
+
     return (
         <View style={styles.contenedorPadre}>
             <ScrollView>
                 <View style={styles.contenedor1}>
-                    <Image
-                        source={require('../../assets/portada.jpg')}
-                        style={styles.imagen}
-                    />
-                    <Text style={{ position: "absolute", bottom: 65, left: 12, fontWeight: "bold", fontSize: 18 }}>Hola, {usuario ? usuario.nombre+" "+usuario.apellido : ".........."}</Text>
+                    <View style={{flexDirection: "row", justifyContent: "space-between", width: "100%"}}>
+                        <View style={{flexDirection: "row"}}>
+                            <Text style={{color: "white", fontSize: 22 }}>Hola, </Text>
+                            <Text style={{color: "white", fontSize: 22, fontWeight: "bold"}}>{usuario ? usuario.nombre : ".........."}!</Text>
+                        </View>
+                        <View style={{}}>
+                            <Icon name="notifications-none" size={30} color="white" />
+                        </View>
+                    </View>
+                    <View style={{flexDirection: "row", backgroundColor: "#88FF94", padding: 10, gap: 10, alignItems: "center", borderRadius: 10}}>
+                        <View style={{backgroundColor: "#D2FFD6", borderRadius: 10, padding: 8}}>
+                            <Icon2 name="home" size={30} color="#F6FCF7" />
+                        </View>
+                        <View>
+                            <Text style={{color: "white"}}>5 miembros en el hogar</Text>
+                            <Text style={{color: "white"}}>4.5kwh x dia</Text>
+                            <Text style={{color: "white"}}>S/4.50 x dia</Text>
+                        </View>
+                    </View>
+                    <View style={{justifyContent: "center", alignItems: "center"}}>
+                        <Text style={{color: "white"}}>Ahorra tu energica electrica en tu hogar</Text>
+                    </View>
                 </View>
                 <View style={styles.contenedor2}>
                     <View style={styles.contenedorSecond}>
                         <View style={styles.child}>
-                            <TouchableOpacity style={{ gap: 5 }} onPress={calcularConsumo}>
-                                <Text>Calcular Consumo</Text>
+                            <TouchableOpacity style={{ gap: 5, justifyContent: "center", alignItems: "center" }} onPress={calcularConsumo}>
+                                <Icon3 name="calculator-outline" size={50} color="#8DEA51" />
+                                <Text style={{color: "#8DEA51"}}>Calcular Consumo</Text>
                                 <Text style={{ fontSize: 12, color: "gray" }}>Calcula el consumo energia de tu hogar</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.child}>
-                            <TouchableOpacity style={{ gap: 5 }}>
-                                <Text>Interpretar recibo luz</Text>
-                                <Text style={{ fontSize: 12, color: "gray" }}>Envia una foto de tu recibo y sera interpretado</Text>
+                            <TouchableOpacity style={{ gap: 5, justifyContent: "center", alignItems: "center" }} onPress={handlePress4}>
+                                <Icon3 name="chatbubbles-outline" size={50} color="#8DEA51" />
+                                <Text style={{color: "#8DEA51"}}>Chat bot</Text>
+                                <Text style={{ fontSize: 12, color: "gray" }}>Interctua con nuestro chat bot acerca de tus dudas</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.child}>
-                            <TouchableOpacity style={{ gap: 5 }}>
-                                <Text>Conectar un Smart</Text>
-                                <Text style={{ fontSize: 12, color: "gray" }}>Conecta un dispositivo Smart Plug</Text>
+                            <TouchableOpacity style={{ gap: 5, justifyContent: "center", alignItems: "center"}} onPress={handlePress2}>
+                                <Icon3 name="document-text-outline" size={50} color="#8DEA51" />
+                                <Text style={{color: "#8DEA51"}}>Ver registros</Text>
+                                <Text style={{ fontSize: 12, color: "gray" }}>Visualiza tus registros de calculos de consumo</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.child}>
-                            <TouchableOpacity style={{ gap: 5 }} onPress={handlePress1}>
-
-                                <Text>Mi cuenta</Text>
+                            <TouchableOpacity style={{ gap: 5, justifyContent: "center", alignItems: "center" }} onPress={handlePress5}>
+                                <Icon3 name="newspaper-outline" size={50} color="#8DEA51" />
+                                <Text style={{color: "#8DEA51"}}>Contenido</Text>
+                                <Text style={{ fontSize: 12, color: "gray" }}>Artículos sobre cómo ahorrar energía</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.child}>
+                            <TouchableOpacity style={{ gap: 5, justifyContent: "center", alignItems: "center" }} onPress={handlePress3}>
+                                <Icon3 name="stats-chart-outline" size={50} color="#8DEA51" />
+                                <Text style={{color: "#8DEA51"}}>Estadisticas</Text>
+                                <Text style={{ fontSize: 12, color: "gray" }}>Visualiza dashboards de tus consumos</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.child}>
+                            <TouchableOpacity style={{ gap: 5, justifyContent: "center", alignItems: "center" }} onPress={handlePress1}>
+                                <Icon3 name="person-outline" size={50} color="#8DEA51" />
+                                <Text style={{color: "#8DEA51"}}>Mi cuenta</Text>
                                 <Text style={{ fontSize: 12, color: "gray" }}>Visualiza los datos de tu cuenta</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
-                <View style={styles.contenedor3}>
+                {/* <View style={styles.contenedor3}>
                     <View>
                         <View>
                             <Image
@@ -103,7 +161,7 @@ export default function Inicio() {
                             Consulta informes detallados sobre tu eficiencia energética y compara tu desempeño con el de otros usuarios. Descubre nuevas formas de ser más eficiente y sostenible.
                         </Text>
                     </View>
-                </View>
+                </View> */}
             </ScrollView>
         </View>
     );
@@ -111,37 +169,29 @@ export default function Inicio() {
 
 const styles = StyleSheet.create({
     contenedorPadre: {
-        flex: 1,
-        backgroundColor: "white",
-        flexDirection: "column",
+        backgroundColor: "#8DEA51",
         justifyContent: "start",
         alignItems: "start",
         gap: 10,
-        marginTop: 0
     },
 
     contenedor1: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        position: "relative"
-    },
-
-    lupita: {
-        backgroundColor: "#D3DCDA",
-        paddingTop: 6,
-        paddingBottom: 6,
-        paddingLeft: 7,
-        paddingRight: 7,
-        borderRadius: 20
+        backgroundColor: "#8DEA51",
+        marginTop: StatusBar.currentHeight,
+        padding: 20,
+        gap: 20,
+        marginBottom: 80
     },
 
     contenedor2: {
+        backgroundColor: "white",
         padding: 10,
-        gap: 20
+        gap: 20,
+        height: 500
     },
 
     contenedor3: {
+        backgroundColor: "white",
         padding: 10,
         gap: 20
     },
@@ -161,6 +211,10 @@ const styles = StyleSheet.create({
     },
 
     contenedorSecond: {
+        position: "absolute",
+        top: -60,
+        left: 10,
+        backgroundColor: "transparent",
         borderRadius: 5,
         gap: 10,
         flexDirection: 'row',
@@ -171,7 +225,7 @@ const styles = StyleSheet.create({
 
     child: {
         padding: 15,
-        borderRadius: 5,
+        borderRadius: 20,
         width: "48%",
         backgroundColor: "white",
         shadowColor: '#000', // Color de la sombra

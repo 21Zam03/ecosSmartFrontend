@@ -8,47 +8,7 @@ import Icon3 from 'react-native-vector-icons/FontAwesome5';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useAuth } from "./AuthContext";
 import axios from 'axios';
-
-const calculateEnergyConsumption = (televisionHoras, lavadoraHoras, bombillasCantidad, bombillasTipo, bombillasHoras, computadoraHoras, refrigeradoraCantidad, refrigeradoraTamaño) => {
-    // Potencia promedio de los dispositivos (en vatios)
-    const potencias = {
-        television: 100,
-        lavadora: 500,
-        bombillaLED: 10,
-        bombillaIncandescente: 60,
-        computadora: 200,
-        refrigeradoraPequena: 100,
-        refrigeradoraMediana: 150,
-        refrigeradoraGrande: 200,
-    };
-
-    // Calcular el consumo de cada dispositivo
-    const consumoTelevision = (potencias.television * televisionHoras) / 1000;
-    const consumoLavadora = (potencias.lavadora * lavadoraHoras) / 1000;
-    const potenciaBombilla = bombillasTipo === 'LED' ? potencias.bombillaLED : potencias.bombillaIncandescente;
-    const consumoBombillas = (potenciaBombilla * bombillasCantidad * bombillasHoras) / 1000;
-    const consumoComputadora = (potencias.computadora * computadoraHoras) / 1000;
-    let potenciaRefrigeradora;
-    switch (refrigeradoraTamaño) {
-        case 'pequena':
-            potenciaRefrigeradora = potencias.refrigeradoraPequena;
-            break;
-        case 'mediana':
-            potenciaRefrigeradora = potencias.refrigeradoraMediana;
-            break;
-        case 'grande':
-            potenciaRefrigeradora = potencias.refrigeradoraGrande;
-            break;
-        default:
-            potenciaRefrigeradora = 0;
-    }
-    const consumoRefrigeradora = (potenciaRefrigeradora * 24 * refrigeradoraCantidad) / 1000;
-
-    // Calcular el consumo total diario
-    const consumoTotal = consumoTelevision + consumoLavadora + consumoBombillas + consumoComputadora + consumoRefrigeradora;
-
-    return consumoTotal;
-};
+import { useRoute } from '@react-navigation/native';
 
 const getRecommendations = (consumo) => {
     if (consumo < 5) {
@@ -106,7 +66,12 @@ const getRecommendationType = (consumo) => {
     }
 };
 
-export default function CalcularFinal() {
+export default function RegistroInfo() {
+
+    const route = useRoute();
+    const { kwh } = route.params;
+    const { cost } = route.params;
+    
     const [usuario, setUsuario] = useState(null);
     const { obtenerDatosUsuario } = useAuth();
 
@@ -127,39 +92,10 @@ export default function CalcularFinal() {
     const navigation = useNavigation();
 
     const redirectToInicio = async () => {
-        const record = {
-            clientId: usuario.idClient,
-            kwh: consumo.toFixed(2),
-            cost: (consumo * 0.60).toFixed(2),
-        }
-        try {
-            const response = await axios.post(`http://192.168.1.39:9000/api/records`, record);
-            console.log(response.data);
-        } catch (error) {
-            console.error('Error al publicar el record:', error);
-        }
         navigation.navigate('Inicio');
     }
 
-    const [consumo, setConsumo] = useState(0);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const televisionHoras = parseFloat(await AsyncStorage.getItem('televisionHoras')) || 0;
-            const lavadoraHoras = parseFloat(await AsyncStorage.getItem('lavadoraHoras')) || 0;
-            const bombillasCantidad = parseInt(await AsyncStorage.getItem('bombillasCantidad'), 10) || 0;
-            const bombillasTipo = await AsyncStorage.getItem('bombillasTipo') || 'LED';
-            const bombillasHoras = parseFloat(await AsyncStorage.getItem('bombillasHoras')) || 0;
-            const computadoraHoras = parseFloat(await AsyncStorage.getItem('computadoraHoras')) || 0;
-            const refrigeradoraCantidad = parseInt(await AsyncStorage.getItem('refrigeradoraCantidad'), 10) || 0;
-            const refrigeradoraTamaño = await AsyncStorage.getItem('refrigeradoraTamaño') || 'mediana';
-
-            const consumoTotal = calculateEnergyConsumption(televisionHoras, lavadoraHoras, bombillasCantidad, bombillasTipo, bombillasHoras, computadoraHoras, refrigeradoraCantidad, refrigeradoraTamaño);
-            setConsumo(consumoTotal);
-        };
-
-        fetchData();
-    }, []);
+    const [consumo, setConsumo] = useState(kwh);
 
     return (
         <ScrollView>
@@ -175,7 +111,7 @@ export default function CalcularFinal() {
                     {getRecommendationType(consumo)}
                 </View>
                 <View style={styles.contenedorQuestion}>
-                    <Text style={styles.textQuestionName}>Según la información proporcionada, tu consumo estimado diario de energía eléctrica es de: {consumo.toFixed(2)} kWh lo que seria en total unos {consumo.toFixed(2) * 0.60} soles</Text>
+                    <Text style={styles.textQuestionName}>Según la información proporcionada, tu consumo estimado diario de energía eléctrica es de: {consumo.toFixed(2)} kWh lo que seria en total unos {cost} soles</Text>
                     {getRecommendations(consumo)}
                 </View>
                 <View>

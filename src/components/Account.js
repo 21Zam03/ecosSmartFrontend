@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useAuth } from "./AuthContext";
 import { useState, useEffect } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Icon2 from 'react-native-vector-icons/FontAwesome';
 
 export default function Account() {
     const { handleLogout } = useAuth();
@@ -47,25 +46,19 @@ export default function Account() {
             <View style={styles.contenedorSecond}>
                 <View style={styles.child}>
                     <TouchableOpacity style={{ gap: 5 }}>
-                        <Icon2 name="bookmark" size={25} color="#FF9F43" />
-                        <Text>Guardados</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.child}>
-                    <TouchableOpacity style={{ gap: 5 }}>
-                        <Icon name="envelope" size={25} color="#FF9F43" />
+                        <Icon name="envelope" size={25} color="#8DEA51" />
                         <Text>Correo</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.child}>
                     <TouchableOpacity style={{ gap: 5 }}>
-                        <Icon name="key" size={25} color="#FF9F43" />
+                        <Icon name="key" size={25} color="#8DEA51" />
                         <Text>Contraseña</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.child}>
                     <TouchableOpacity style={{ gap: 5 }}>
-                        <Icon name="cog" size={25} color="#FF9F43" />
+                        <Icon name="cog" size={25} color="#8DEA51" />
                         <Text>Configuracion</Text>
                     </TouchableOpacity>
                 </View>
