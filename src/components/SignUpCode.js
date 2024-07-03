@@ -2,8 +2,13 @@ import { View, Text, TouchableOpacity, StyleSheet, TextInput, Modal } from "reac
 import { useNavigation } from '@react-navigation/native';
 import { useState, useRef, useEffect } from "react";
 import SignUpPassword from "./SignUpPassword";
+import { useRoute } from '@react-navigation/native';
 
-export default function SignUpCode({email}) {
+export default function SignUpCode() {
+
+    const route = useRoute();
+    const { email } = route.params;
+
     const navigation = useNavigation();
     const [timer, setTimer] = useState(60);
     const [message, setMessage] = useState(false);
