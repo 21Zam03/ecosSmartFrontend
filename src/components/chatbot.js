@@ -68,7 +68,7 @@ const ChatBot = () => {
             '1. Instalar aislamiento térmico: Mejorar el aislamiento de los muros, techos y ventanas ayuda a mantener la temperatura interior de forma más eficiente.\n'+'\n'+
             '2. Utilizar iluminación LED: Las bombillas LED consumen mucha menos energía que las incandescentes o fluorescentes tradicionales.\n'+'\n'+
             '3. Aprovechar la luz natural: Mantener las cortinas y persianas abiertas durante el día para aprovechar la luz solar y reducir el uso de iluminación artificial.',
-            'Como puedo monitorear en detalle el consumo de energia y recursos en mi hogar': 'Para poder monitorear y analizar en detalle el consumo de energía y recursos en tu hogar o negocio, te recomiendo seguir estos pasos\n '+ '\n'+
+            'como puedo monitorear en detalle el consumo de energia y recursos en mi hogar': 'Para poder monitorear y analizar en detalle el consumo de energía y recursos en tu hogar o negocio, te recomiendo seguir estos pasos\n '+ '\n'+
             '1. Instalar medidores inteligentes: Procura que tu proveedor de servicios públicos (electricidad, gas, agua) instale medidores inteligentes que puedan proporcionar datos detallados sobre tu consumo en tiempo real\n '+ '\n'+
             '2. Utilizar aplicaciones de monitoreo: Existen aplicaciones y plataformas que te permiten conectar tus medidores inteligentes y hacer un seguimiento exhaustivo de tu consumo de energía, agua y otros recursos\n '+ '\n'+
             '3. Analizar los datos: Revisa periódicamente los informes y gráficas que generen estas aplicaciones. Identifica patrones, picos y tendencias en tu consumo. Esto te permitirá detectar oportunidades de ahorro\n '+ '\n'+
