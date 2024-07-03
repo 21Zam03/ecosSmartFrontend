@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useState, useRef, useEffect } from "react";
 import SignUpPassword from "./SignUpPassword";
 
-export default function SignUpCode() {
+export default function SignUpCode({email}) {
     const navigation = useNavigation();
     const [timer, setTimer] = useState(60);
     const [message, setMessage] = useState(false);
@@ -67,7 +67,7 @@ export default function SignUpCode() {
         <View style={styles.contenedor}>
             <View style={styles.contenedorQuestion}>
                 <Text style={styles.textQuestionName}>Digite el codigo</Text>
-                <Text>Se le acaba de enviar un codigo de confirmacion al correo institucional jzambranoh@autonoma.edu.pe </Text>
+                <Text>Se le acaba de enviar un codigo de confirmacion al correo {email} </Text>
                 <Text>codigo de 5 digitos</Text>
             </View>
             <View style={{ alignItems: "center" }}>

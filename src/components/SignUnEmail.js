@@ -12,7 +12,9 @@ export default function SignUpEmail () {
     const redirectToSignUpCode = async () => {
         try {
             await AsyncStorage.setItem('email', email);
-            navigation.navigate('SignUpCode')
+            navigation.navigate('SignUpCode',{
+                email: email
+            })
             //Guardar el codigo de confirmacion en el asyncStorage
         } catch (e) {
             console.error('Error guardando los datos', e);
