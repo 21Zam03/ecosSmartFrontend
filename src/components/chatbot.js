@@ -54,6 +54,7 @@ const ChatBot = () => {
         const automaticResponses = {
             'hola': '¡Hola! ¿Cómo puedo ayudarte?',
             'adios': '¡Hasta luego!',
+            'como estas': '¡Bien! ¿Cómo puedo ayudarte?',
             'algunas recomendaciones': '¡Claro! Aquí tienes algunas recomendaciones para ahorrar energía\n '+ '\n'+
             '1. Iluminación: Usa bombillas LED y apaga las luces cuando no las necesites\n'+'\n'+
             '2. Electrodomésticos: Prefiere los de alta eficiencia energética y desconéctalos cuando no estén en uso\n'+'\n'+
@@ -62,7 +63,20 @@ const ChatBot = () => {
             '5. Electrónica: Desconecta cargadores y equipos electrónicos cuando no los uses.\n'+'\n'+
             '6. Agua caliente: Ajusta la temperatura del calentador y usa dispositivos de bajo consumo.\n'+'\n'+
             '7. Renovables: Considera paneles solares u otras energías renovables si es posible.\n'+'\n'+
-            '8. Hábitos: Usa electrodomésticos eficientemente y promueve el consumo responsable.'    
+            '8. Hábitos: Usa electrodomésticos eficientemente y promueve el consumo responsable.',
+            'Como mejorar la eficiencia energetica en mi hogar': 'Aquí hay algunas recomendaciones para mejorar la eficiencia energética en tu hogar o negocio:\n'+'\n'+
+            '1. Instalar aislamiento térmico: Mejorar el aislamiento de los muros, techos y ventanas ayuda a mantener la temperatura interior de forma más eficiente.\n'+'\n'+
+            '2. Utilizar iluminación LED: Las bombillas LED consumen mucha menos energía que las incandescentes o fluorescentes tradicionales.\n'+'\n'+
+            '3. Aprovechar la luz natural: Mantener las cortinas y persianas abiertas durante el día para aprovechar la luz solar y reducir el uso de iluminación artificial.',
+            'Como puedo monitorear en detalle el consumo de energia y recursos en mi hogar': 'Para poder monitorear y analizar en detalle el consumo de energía y recursos en tu hogar o negocio, te recomiendo seguir estos pasos\n '+ '\n'+
+            '1. Instalar medidores inteligentes: Procura que tu proveedor de servicios públicos (electricidad, gas, agua) instale medidores inteligentes que puedan proporcionar datos detallados sobre tu consumo en tiempo real\n '+ '\n'+
+            '2. Utilizar aplicaciones de monitoreo: Existen aplicaciones y plataformas que te permiten conectar tus medidores inteligentes y hacer un seguimiento exhaustivo de tu consumo de energía, agua y otros recursos\n '+ '\n'+
+            'Analizar los datos: Revisa periódicamente los informes y gráficas que generen estas aplicaciones. Identifica patrones, picos y tendencias en tu consumo. Esto te permitirá detectar oportunidades de ahorro\n '+ '\n'+
+            'Desagregar el consumo: Trata de determinar qué equipos, áreas o actividades consumen más energía en tu hogar o negocio. Puedes hacer esto mediante mediciones individuales o mediante estimaciones basadas en los datos generales.',
+            'Como puedo implementar una estrategia de gestion integral para optimizar el consumo de energia' : 'Para implementar una estrategia de gestión integral que te permita optimizar el uso de energía y recursos de manera sostenible en tu hogar o negocio, te recomiendo seguir estos pasos clave\n '+ '\n'+
+            '1. Diagnóstico inicial: Realizar un análisis exhaustivo de tu consumo actual de energía, agua y otros recursos\n '+ '\n'+
+            '2. Planificación estratégica: Definir objetivos claros de reducción de consumo y mejora de la eficiencia\n '+ '\n'+
+            '3. Implementación de mejoras: Invertir en tecnologías y equipos más eficientes (iluminación LED, electrodomésticos ENERGY STAR, etc.).'
         };
 
         // Verifica si el mensaje del usuario activa una respuesta automática
